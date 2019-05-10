@@ -1,25 +1,17 @@
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define("account", {
+    return sequelize.define("session", {
         id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        cardNumber: {
+        accountID: {
             type: DataTypes.STRING(200),
             allowNull: false
         },
-        pin: {
-            type: DataTypes.STRING(200),
-            allowNull: true
-        },
-        amount: {
-            type: DataTypes.FLOAT(20),
-            allowNull: false
-        }
     }, {
-        tableName: "account",
+        tableName: "session",
         timestamps: true
     });
 };

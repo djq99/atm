@@ -14,8 +14,8 @@ module.exports = {
             console.log(e);
             res.status(500).json({
                 status: 500,
-                message: e ? e : `Something wrong during ${__dirname}`,
-                data: newAccount
+                message: e.messagee ? e.message : `Something wrong during ${__dirname}`,
+                data: {}
             })
         }
     }
