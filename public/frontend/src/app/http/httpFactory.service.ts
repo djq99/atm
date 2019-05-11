@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
-const baseUrl = "http://ec2-54-81-140-182.compute-1.amazonaws.com/api/";
-// const baseUrl = "http://localhost:3000/api/"
+// const baseUrl = "http://ec2-54-81-140-182.compute-1.amazonaws.com/api/";
+const baseUrl = "http://localhost:3000/api/"
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Observable, throwError} from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
