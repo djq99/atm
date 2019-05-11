@@ -16,7 +16,7 @@ server.use(function(req, res, next) {
     next();
 });
 //setup root of the frontend
-server.use(express.static(`${__dirname}/public/frontend/dist/frontend`));
+server.use(express.static("./public/frontend/dist/frontend"));
 //load all the models
 loaded.database.sync({}).then(() => {
     console.log("Database has been connected");
@@ -28,7 +28,7 @@ server.get("/", (req, res) => {
     //     message: "Server is running",
     // });
     // Here is the angular frontend root.
-    res.sendFile("index.html", { root: `${__dirname}/public/frontend/dist/frontend`});
+    res.sendFile("index.html", { root: "./public/frontend/dist/frontend"});
 });
 
 server.use("/", routerGenerator(express.Router(), `${__dirname}/components`, ""));
