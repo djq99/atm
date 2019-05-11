@@ -1,0 +1,16 @@
+<body class="text-center">
+  <form class="form-signin" (ngSubmit)="onLogin(f)" #f="ngForm">
+      <h1 class="h3 mb-3 font-weight-normal">ATM</h1>
+      <div class="form-group">
+      <label for="input" class="sr-only">Card Number</label>
+      <input type="cardNumber" id="cardNumber" name="cardNumber" [(ngModel)]="model.cardNumber" #cardNumber="ngModel" class="form-control" placeholder="Card Number" required autofocus>
+    </div>
+      <div class="form-group">
+      <label for="inputPassword" class="sr-only">Pin</label>
+      <input type="password" id="pin" name="pin" [(ngModel)]="model.pin" #pin="ngModel" class="form-control" placeholder="Pin" required>
+    </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+      <input type="button" class="btn btn-lg btn-primary btn-block" value="Get New Card"(click)="generateNewCard()">
+      <p id="copyright" class="mt-5 mb-3">&copy; 2019</p>
+  </form>
+</body>
