@@ -3,10 +3,13 @@ import {
     HttpInterceptor,
     HttpHandler,
     HttpRequest,
+    HttpResponse
   } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {LocalStorageService} from "../storage/storage.service";
 import {Injectable} from "@angular/core";
+import { AuthService } from '../auth/auth.service';
+import { map } from 'rxjs/operators';
 
 
 export const AUTH_KEY = 'AUTH';
@@ -15,7 +18,7 @@ export const AUTH_KEY = 'AUTH';
     providedIn: 'root',
 })
   export class addHeaderInterceptor implements HttpInterceptor {
-      constructor(private localStorageService: LocalStorageService){
+      constructor(private localStorageService: LocalStorageService, private authService: AuthService){
 
       }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -23,10 +26,26 @@ export const AUTH_KEY = 'AUTH';
       const token = this.localStorageService.getItem(AUTH_KEY);
       if(token){
         const clonedRequest = req.clone({ headers: req.headers.set('Authorization', `${token.authToken}`) });
-        return next.handle(clonedRequest);
+        return next.handle(clonedRequest).pipe(map(event => {
+            if(event instanceof HttpResponse){
+              if(!event.body || event.body.status !== 200){
+                this.authService.logout();
+              }
+              return event;
+            }
+            return event;
+          }));
       }
       else{
-          return next.handle(req);
+        return next.handle(req).pipe(map(event => {
+            if(event instanceof HttpResponse){
+              if(!event.body || event.body.status !== 200){
+                this.authService.logout();
+              }
+              return event;
+            }
+            return event;
+          }));
       }
       
 

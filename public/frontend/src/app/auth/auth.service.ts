@@ -25,7 +25,6 @@ export class AuthService {
                 this.token = response.data.token;
                 this.localStorageService.setItem(AUTH_KEY, {authToken: this.token});
                 this.announceAthenticated(true);
-                console.log(response.data);
                 this.router.navigate(["home"]);
             }
         })
@@ -34,11 +33,12 @@ export class AuthService {
         this.httpFactory.post("account/logout",{})
         .subscribe((response : HttpResponse) => {
             if(response.status === 200){
-                this.localStorageService.removeItem(AUTH_KEY);
-                this.announceAthenticated(false);
-                this.router.navigate(["login"]);
+                alert("Logout successfully");
             }
-        })
+        });
+        this.localStorageService.removeItem(AUTH_KEY);
+        this.announceAthenticated(false);
+        this.router.navigate(["login"]);
     }
     generateNewCard(){
         this.httpFactory.post("account/generateAccount",{})

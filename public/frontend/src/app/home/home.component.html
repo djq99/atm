@@ -1,7 +1,8 @@
 <body class="text-center">
-    <button (click)="logout()">logout</button>
-    <button (click)="deposit()">deposit</button>
-    <button (click)="withdrawal()">withdrawal</button>
-        <h1 class="h3 mb-3 font-weight-normal">Your current balance is: {{balance}}</h1>
+    <button class="btn btn-lg btn-primary" (click)="logout()">logout</button>
+    <button class="btn btn-lg btn-primary" (click)="deposit()">deposit</button>
+    <button class="btn btn-lg btn-primary" (click)="withdrawal()">withdrawal</button>
+        <h1 class="h3 mb-3 font-weight-normal">Your current balance is:</h1>
+        <p>${{balance}}</p>
         
   </body>
