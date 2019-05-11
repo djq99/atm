@@ -1,9 +1,9 @@
 module.exports = {
     development: {
         username: "jiaqi",
-        password: "rqM54FW9Jb9kdx3",
+        password: "rqM54FW9Jb9k@dx3",
         database: "atm",
-        host: "jiaqi-test.clge8cfla3dp.us-east-1.rds.amazonaws.com",
+        host: "ec2-54-81-140-182.compute-1.amazonaws.com",
         dialect: "mysql"
     }
 };
