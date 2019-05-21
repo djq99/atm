@@ -4,8 +4,6 @@ Hosted on
 ```sh
 http://ec2-54-81-140-182.compute-1.amazonaws.com
 ```
-### Run it locally
-
 
 # Features
 
