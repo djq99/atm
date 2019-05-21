@@ -12,7 +12,7 @@ module.exports.withdrawal = async(accountID, amount) => {
         if(isNaN(amount) || amount <= 0){
             throw new Error("Invalid amount money");
         }
-        const newAmounst = cardInfo.amount - amount;
+        const newAmounst = (cardInfo.amount - amount).toFixed(2);
         if(newAmounst < 0){
             throw new Error("The balance is not enough");
         }

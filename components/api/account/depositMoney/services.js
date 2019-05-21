@@ -10,7 +10,7 @@ module.exports.deposit = async(accountID, amount) => {
         if(isNaN(amount) || amount <= 0){
             throw new Error("Invalid amount money");
         }
-        const newAmounst = cardInfo.amount + amount;
+        const newAmount = (cardInfo.amount + amount).toFixed(2);
         //not using await to block each query which can make both to be multithreading.
         let promises = [];
         const transactionPromise = transaction.create({
@@ -20,11 +20,11 @@ module.exports.deposit = async(accountID, amount) => {
         });
         promises.push(transactionPromise);
         const updatePromise =  cardInfo.update({
-            amount: newAmounst
+            amount: newAmount
         });
         promises.push(updatePromise);
         await Promise.all(promises);
-        return newAmounst;
+        return newAmount;
     }
     catch(e){
         throw e;

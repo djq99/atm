@@ -14,6 +14,11 @@ export class HomeComponent implements OnInit {
   withdrawalAmount: number;
   constructor(private authService: AuthService, private homeService: HomeService) { }
 
+  countDecimals(value) {
+    if(Math.floor(value) === value) return 0;
+    return value.toString().split(".")[1].length || 0;
+  }
+
   ngOnInit() {
     this.homeService.getBalance().subscribe(balance => {
       this.balance = balance;
@@ -30,6 +35,9 @@ export class HomeComponent implements OnInit {
     if(isNaN(Number(input))){
       window.alert("Invalid input");
     }
+    if(this.countDecimals(input) > 2){
+      window.alert("Only support two decimal precision");
+    }
     else{
       this.depositAmount = parseFloat(input);
       this.homeService.deposit(this.depositAmount).subscribe(balance => {
@@ -44,6 +52,9 @@ export class HomeComponent implements OnInit {
     }
     if(isNaN(Number(input))){
       window.alert("Invalid input");
+    }
+    if(this.countDecimals(input) > 2){
+      window.alert("Only support two decimal precision");
     }
     else{
       this.withdrawalAmount = parseFloat(input);
