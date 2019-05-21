@@ -55,7 +55,7 @@ http://localhost:4200
  - Allow one account has multiple cards and handle multiple transactions happen at same time
  - Automatic deployment/ pipeline
  - Safety
- - Sacllablility
+ - Scalability
 
 License
 ----
