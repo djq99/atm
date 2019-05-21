@@ -16,6 +16,9 @@ export class HomeComponent implements OnInit {
 
   countDecimals(value) {
     if(Math.floor(value) === value) return 0;
+    if(!value.toString().includes(".")){
+      return 0;
+    }
     return value.toString().split(".")[1].length || 0;
   }
 
